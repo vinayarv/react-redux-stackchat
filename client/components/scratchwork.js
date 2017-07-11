@@ -1,16 +1,4 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import store from '../store';
-import { connect } from  'react-redux';
-
-// These values are all hardcoded...for now!
-// Soon, we'll fetch them from the server!
-const RANDOM_CHANNEL = '/channels/1';
-const GENERAL_CHANNEL = '/channels/2';
-const DOGS_CHANNEL = '/channels/3';
-const LUNCH_CHANNEL = '/channels/4';
-
-class ChannelList extends Component {
+export default class ChannelList extends Component {
 
   constructor () {
     super();
@@ -24,6 +12,13 @@ class ChannelList extends Component {
   // componentWillUnmount () {
   //   // this.unsubscribe();
   // }
+
+ const mapStateToProps = function(state){
+    return {}; 
+ };
+
+ let connector =connect(mapStateToProps);
+  ChannelList
 
   render () {
 
@@ -62,32 +57,3 @@ class ChannelList extends Component {
     );
   }
 }
-
-/** Write your `connect` component below! **/
-function ChannelList(props){
-  return (
-     <ul>
-      <li>
-        <NavLink to={"URL_GOES_HERE"} activeClassName="active">
-          <span> {/* channel name goes here */}</span>
-          <span className="badge">{/* number of messages calculation goes here */}</span> 
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/new-channel">Create a channel...</NavLink>
-      </li>
-    </ul>
-
-
-    );
-}
-
-const mapStateToProps = function(state){
-  return {};
-}
-
-
-
- const ChannelListContainer = connect(mapStateToProps)(ChannelList);
-
- export default ChannelListContainer; 
